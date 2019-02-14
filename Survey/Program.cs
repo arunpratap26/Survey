@@ -9,17 +9,17 @@ namespace Survey
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("What is your name?");
             Console.ForegroundColor = ConsoleColor.White;
-            var name = Console.ReadLine();
+            var name = TryAnswer();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("What is your age?");
             Console.ForegroundColor = ConsoleColor.White;
-            var age = Console.ReadLine();
+            var age = TryAnswer();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("What month were you born in?");
             Console.ForegroundColor = ConsoleColor.White;
-            var month = Console.ReadLine();
+            var month = TryAnswer();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Your answer ");
@@ -41,7 +41,18 @@ namespace Survey
             {
                 Console.WriteLine("you are a Gemini.");
             }
-
+        }
+        static string TryAnswer()
+        {
+            var question = Console.ReadLine();
+            if (question == "")
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("you haven't answered anything please answer it");
+                Console.ForegroundColor = ConsoleColor.Green;
+                return Console.ReadLine();
+            }
+            return question;
         }
     }
 }
